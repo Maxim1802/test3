@@ -7,7 +7,7 @@ pipeline {
         spec:
           containers:
           - name: cli
-            image: ubuntu
+            image: amazon/aws-cli
             command:
             - cat
             tty: true

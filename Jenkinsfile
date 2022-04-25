@@ -4,7 +4,7 @@ pipeline {
     stage('cli') {
       steps {
         script {
-          setBuildStatus("Build complete", "SUCCESS")
+          setBuildStatus("Build complete", "SUCCESS");
         }
         
       }

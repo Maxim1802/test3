@@ -21,8 +21,12 @@ pipeline {
         container('cli') {
           sh 'aws --help'
         }
+        script {
+              setBuildStatus("Build complete", "SUCCESS")
+        }
       }
     }
+  }
     
     void setBuildStatus(String message, String state) {
     step([
@@ -34,10 +38,10 @@ pipeline {
       ]);
     }
 
-   setBuildStatus("Build complete", "SUCCESS");
+   
   
   
-  }
+  
 }
 
 

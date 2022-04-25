@@ -26,6 +26,10 @@ pipeline {
         container('cli') {
           sh 'aws --help'
         }
+        script {
+          setBuildStatus("Build complete", "SUCCESS")
+        }
+        
       }
     }
   }

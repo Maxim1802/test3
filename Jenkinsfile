@@ -4,6 +4,7 @@ pipeline {
     stage('cli') {
       steps {
           setBuildStatus("Build pending", "PENDING");  
+        
       }
     }
     stage('wait') {

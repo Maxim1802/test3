@@ -2,10 +2,7 @@ pipeline {
   agent any
   stages {
     stage('cli') {
-      steps {
-          setBuildStatus("Build in progress", "PENDING");  
-        
-      }
+      steps {setBuildStatus("Build in progress", "PENDING")}
     }
     stage('wait') {
       steps {
@@ -26,8 +23,8 @@ pipeline {
 void setBuildStatus(String message, String state) {
   step([
       $class: "GitHubCommitStatusSetter",
-    reposSource: [$class: "ManuallyEnteredRepositorySource", url: "${GIT_URL}"],
-      contextSource: [$class: "ManuallyEnteredCommitContextSource", context: "test3"],
+      reposSource: [$class: "ManuallyEnteredRepositorySource", url: "${GIT_URL}"],
+      contextSource: [$class: "ManuallyEnteredCommitContextSource", context: "${GIT_BRANCH}"],
       errorHandlers: [[$class: "ChangingBuildStatusErrorHandler", result: "UNSTABLE"]],
       statusResultSource: [ $class: "ConditionalStatusResultSource", results: [[$class: "AnyBuildResult", message: message, state: state]] ]
   ]);

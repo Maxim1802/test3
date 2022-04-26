@@ -4,10 +4,18 @@ pipeline {
     stage('cli') {
       steps {
         script {
-          setBuildStatus("Build fail", "PENDING");
+          setBuildStatus("Build pending", "PENDING");
         }
         
       }
+    }
+  }
+  post {
+    success {
+      setBuildStatus("Build success", "SUCCESS");
+    }
+    failure {
+      setBuildStatus("Build failure", "FAILURE");
     }
   }
 }

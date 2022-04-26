@@ -4,7 +4,7 @@ pipeline {
     stage('cli') {
       steps {
         script {
-          setBuildStatus("Build fail", "PANDING");
+          setBuildStatus("Build fail", "PENDING");
         }
         
       }

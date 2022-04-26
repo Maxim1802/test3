@@ -3,10 +3,12 @@ pipeline {
   stages {
     stage('cli') {
       steps {
-        script {
-          setBuildStatus("Build pending", "PENDING");
-        }
-        
+          setBuildStatus("Build pending", "PENDING");  
+      }
+    }
+    stage('wait') {
+      steps {
+          sleep(time:10,unit:"SECONDS")  
       }
     }
   }

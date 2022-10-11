@@ -1,6 +1,6 @@
 library identifier: 'custom-lib@main', retriever: modernSCM(
   [$class: 'GitSCMSource',
-   remote: 'https://github.com/Maxim1802/explorer-jenkins-lib.git',
+   remote: 'git@github.com:Maxim1802/explorer-jenkins-lib.git',
    credentialsId: 'explorer_github'])
 
 pipeline {

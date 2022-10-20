@@ -14,6 +14,7 @@ pipeline {
         sh 'echo "BUILD_DATE=$(date +%F-%T)"'
         sh 'echo "BUILD_DATE=$(date +%F)"'
         sh 'echo $(date +%F)'
+        sh 'echo "${GIT_URL}"'
           sleep(time:10,unit:"SECONDS")  
       }
     }

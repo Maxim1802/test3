@@ -13,6 +13,7 @@ pipeline {
         //sh 'echo sh(script: "echo `date +%s`", returnStdout: true).trim()'
         sh 'echo "BUILD_DATE=$(date +%F-%T)"'
         sh 'echo "BUILD_DATE=$(date +%F)"'
+        sh 'echo ${BUILD_DATE}'
           sleep(time:10,unit:"SECONDS")  
       }
     }

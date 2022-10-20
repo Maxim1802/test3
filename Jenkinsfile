@@ -6,7 +6,8 @@ pipeline {
     }
     stage('wait') {
       steps {
-          sleep(time:10,unit:"SECONDS")  
+        sh 'echo ${BUILD_ID}'
+        sleep(time:10,unit:"SECONDS")  
       }
     }
   }

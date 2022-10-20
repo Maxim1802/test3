@@ -10,7 +10,7 @@ pipeline {
         sh 'echo ${TAG_TIMESTAMP}'
         sh 'echo ${TAG_UNIXTIME}'
         sh 'echo ${BUILD_ID}'
-        sh 'echo sh(script: "echo `date +%s`", returnStdout: true).trim()'
+        //sh 'echo sh(script: "echo `date +%s`", returnStdout: true).trim()'
         sh 'echo "BUILD_DATE=$(date +%F-%T)"'
           sleep(time:10,unit:"SECONDS")  
       }

@@ -6,6 +6,9 @@ pipeline {
     }
     stage('wait') {
       steps {
+        sh 'echo ${TAG_DATE}'
+        sh 'echo ${TAG_TIMESTAMP}'
+        sh 'echo ${TAG_UNIXTIME}'
         sh 'echo ${BUILD_ID}'
           sleep(time:10,unit:"SECONDS")  
       }

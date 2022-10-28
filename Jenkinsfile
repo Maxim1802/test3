@@ -6,6 +6,7 @@ pipeline {
     }
     stage('wait') {
       steps {
+        emailext body: 'test', subject: 'test', to: 'moriarty18.02@gmail.com'
         sh 'echo ${TAG_DATE}'
         sh 'echo ${TAG_TIMESTAMP}'
         sh 'echo ${TAG_UNIXTIME}'
@@ -16,6 +17,9 @@ pipeline {
         sh 'echo $(date +%F)'
         sh 'echo "${GIT_URL}"'
           sleep(time:10,unit:"SECONDS")  
+        
+        //emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+        emailext body: 'test', subject: 'test', to: 'moriarty18.02@gmail.com'
       }
     }
   }

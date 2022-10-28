@@ -7,6 +7,8 @@ pipeline {
     stage('wait') {
       steps {
         emailext body: 'test', subject: 'test', to: 'moriarty18.02@gmail.com'
+        emailext body: 'test', subject: 'test', to: 'mtrogaev@ankocorp.com'
+        mail bcc: '', body: '1', cc: '', from: '', replyTo: '', subject: '1', to: 'mtrogaev@ankocorp.com'
         sh 'echo ${TAG_DATE}'
         sh 'echo ${TAG_TIMESTAMP}'
         sh 'echo ${TAG_UNIXTIME}'

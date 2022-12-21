@@ -27,6 +27,5 @@ pipeline {
         always {
             jiraSendDeploymentInfo environmentId: 'STAGE', environmentName: 'stage', environmentType: 'staging'
         }
-    }
-    
+    } 
 }

@@ -14,6 +14,7 @@ pipeline {
               }
             }
             steps {
+                sleep 60
                 sh 'echo ${GIT_COMMIT}'
                 sh 'echo ${JOB_NAME}'
                 sh 'echo ${JOB_BASE_NAME}'

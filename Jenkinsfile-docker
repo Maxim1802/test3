@@ -25,9 +25,7 @@ pipeline {
     }
     post {
         always {
-            jiraSendDeploymentInfo environmentId: 'STAGE', environmentName: 'stage', environmentType: 'staging'
+            jiraSendDeploymentInfo environmentId: 'UAT', environmentName: 'uat', environmentType: 'staging'
         }
     } 
-    
-    
 }

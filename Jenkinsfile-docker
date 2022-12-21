@@ -1,0 +1,25 @@
+pipeline {
+    agent {
+        node {
+            label 'aws-ec2-docker'
+        }
+    }
+    stages {
+        stage('deploy to stg') {
+            agent { 
+              docker {
+                image 'node:14' 
+                reuseNode true
+                args  '--entrypoint=""'
+              }
+            }
+            steps {
+                sh 'echo ${GIT_COMMIT}'
+                sh 'echo ${JOB_NAME}'
+                sh 'echo ${JOB_BASE_NAME}'
+                sh 'echo ${BUILD_DISPLAY_NAME}'
+                sh 'echo env'
+            }
+        }
+    }
+}

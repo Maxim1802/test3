@@ -14,13 +14,18 @@ pipeline {
               }
             }
             steps {
-                sleep 60
+                //sleep 60
                 sh 'echo ${GIT_COMMIT}'
                 sh 'echo ${JOB_NAME}'
                 sh 'echo ${JOB_BASE_NAME}'
                 sh 'echo ${BUILD_DISPLAY_NAME}'
                 sh 'echo env'
             }
+        }
+    }
+    post {
+        always {
+            jiraSendDeploymentInfo environmentId: 'STAGE', environmentName: 'stage', environmentType: 'staging'
         }
     }
     

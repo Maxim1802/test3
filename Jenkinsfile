@@ -1,8 +1,14 @@
+library identifier: 'custom-lib@main', retriever: modernSCM(
+  [$class: 'GitSCMSource',
+   remote: 'https://github.com/Maxim1802/explorer-jenkins-lib.git',
+   credentialsId: 'explorer_github'])
+//@Library("custom-lib") _
+
 pipeline {
   agent any
   stages {
     stage('cli') {
-      steps {setBuildStatus("Build in progress", "PENDING")}
+      steps {setBuildStatus(gitUrl: "${GIT_URL}", message: "Build in progress", state: "PENDING")}
     }
     stage('wait') {
       steps {
@@ -11,17 +17,9 @@ pipeline {
     }
   }
   post {
-    success {setBuildStatus("Build success", "SUCCESS")}
-    failure {setBuildStatus("Build failure", "FAILURE")}
+    success {setBuildStatus(gitUrl: "${GIT_URL}", message: "Build success", state: "SUCCESS")}
+    failure {setBuildStatus(gitUrl: "${GIT_URL}", message: "Build failure", state: "FAILURE")}
   }
 }
 
-void setBuildStatus(String message, String state) {
-  step([
-      $class: "GitHubCommitStatusSetter",
-      reposSource: [$class: "ManuallyEnteredRepositorySource", url: "${GIT_URL}"],
-      contextSource: [$class: "ManuallyEnteredCommitContextSource", context: "Jenkins"],
-      errorHandlers: [[$class: "ChangingBuildStatusErrorHandler", result: "UNSTABLE"]],
-      statusResultSource: [ $class: "ConditionalStatusResultSource", results: [[$class: "AnyBuildResult", message: message, state: state]] ]
-  ]);
-}
+
